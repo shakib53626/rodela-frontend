@@ -7,7 +7,7 @@
                         <div class="navbar-content">
                             <ul class="navbar-list">
                                 <li class="navbar-item dropdown">
-                                    <a class="navbar-link" href="#">home</a>
+                                    <router-link :to="{name:'home.page'}" class="navbar-link" href="#">home</router-link>
                                 </li>
 
                                 <li class="navbar-item dropdown-megamenu">

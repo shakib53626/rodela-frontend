@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
+import {useCategory} from '@/stores'
+import { storeToRefs } from "pinia";
 
 // Import Swiper styles
 import "swiper/css";
@@ -10,6 +12,15 @@ import "swiper/css/pagination";
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
 
 const modules = ref([Pagination, Autoplay, Navigation]);
+
+
+
+const cat = useCategory();
+onMounted(() => {
+  cat.getData();
+});
+
+
 </script>
 
 <template lang="">
@@ -51,6 +62,7 @@ const modules = ref([Pagination, Autoplay, Navigation]);
 
     <section class="section suggest-part">
       <div class="container">
+     
         <div class="row">
           <div class="col-lg-12">
             <div class="section-heading">
@@ -60,7 +72,7 @@ const modules = ref([Pagination, Autoplay, Navigation]);
         </div>
 
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-          <div class="col">
+          <div class="col" v-for="(category, index) in cat" :key="index">
             <div class="product-card">
               <ul>
                 <li>
@@ -70,7 +82,7 @@ const modules = ref([Pagination, Autoplay, Navigation]);
                 </li>
               </ul>
 
-              <h6 class="text-center mt-2">category name</h6>
+              <h6 class="text-center mt-2">{{category.name}}</h6>
             </div>
           </div>
 

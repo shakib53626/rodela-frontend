@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
+import NProgress from "nprogress"
 import Index from '@/views/pages/Index.Vue'
 import Shop from '@/views/pages/Shop.Vue'
 import SingleProduct from '@/views/pages/SingleProduct.Vue'
@@ -41,7 +42,12 @@ const DEFAULT_TITLE=404;
 
   router.beforeEach((to, from, next) => {
     document.title=to.meta.title || DEFAULT_TITLE;
+    NProgress.start();
     next();
+  })
+
+  router.afterEach(() => {
+    NProgress.done();
   })
 
 

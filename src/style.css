@@ -32,3 +32,17 @@
 .new-slider .swiper-button-next{
     background-color: #a1a1a1;
 }
+
+
+/* Nprogress Package Css code */
+@import "nprogress/nprogress.css";
+#nprogress .bar {
+  background: #ffffff !important;
+  padding: 0 10px !important;
+  height: 4px !important;
+}
+
+#nprogress .spinner .spinner-icon {
+  border-top-color: #ffffff !important;
+  border-left-color: #ffffff !important;
+}
