@@ -10,17 +10,17 @@ export const useCategory = defineStore("category", {
         actions: {
             async getData(){
                 try {
-                    axios.get("http://127.0.0.1:8000/api/categories").then(res=>{
-                        // console.log(res.data.result);
-                        let cate = res.data.result
-                        cate.map((cat)=>{
-                            this.categories = cat;
-                        })
-                    });
-                    
-                } catch (error) {
-                   
-                }
+                    const response = await axios.get('/categories', {
+                      params: {
+                        limit: 10
+                      }
+                    })
+                    this.categories = response.data.result
+                  } catch (error) {
+                    console.error(error)
+                  } finally {
+                    // isPreloader.value = false
+                  }
             }
         }
 })

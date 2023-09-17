@@ -16,6 +16,7 @@ const modules = ref([Pagination, Autoplay, Navigation]);
 
 
 const cat = useCategory();
+const {categories} = storeToRefs(cat);
 onMounted(() => {
   cat.getData();
 });
@@ -62,7 +63,6 @@ onMounted(() => {
 
     <section class="section suggest-part">
       <div class="container">
-     
         <div class="row">
           <div class="col-lg-12">
             <div class="section-heading">
@@ -72,7 +72,7 @@ onMounted(() => {
         </div>
 
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-          <div class="col" v-for="(category, index) in cat" :key="index">
+          <div class="col" v-for="(category, index) in categories" :key="index">
             <div class="product-card">
               <ul>
                 <li>
@@ -82,7 +82,7 @@ onMounted(() => {
                 </li>
               </ul>
 
-              <h6 class="text-center mt-2">{{category.name}}</h6>
+              <h6 class="text-center mt-2">{{ category.name }}</h6>
             </div>
           </div>
 
